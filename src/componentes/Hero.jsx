@@ -9,15 +9,70 @@ export default function Hero() {
 
   useEffect(() => {
 
-    fetch(`${API_URL}/api/santo/day`)
-      .then(res => {
-        if (!res.ok) {
-          return fetch(`${API_URL}/api/santo/3`);
+    const buscarSanto = async () => {
+
+      const MAX_ID = 20; // ajuste conforme total do seu banco
+      const idsTestados = new Set();
+
+      try {
+
+        // tenta primeiro o santo do dia
+        let res = await fetch(`${API_URL}/api/santo/day`);
+
+        if (res.ok) {
+
+          const data = await res.json();
+
+          if (data?.ID) {
+            setSanto(data);
+            return;
+          }
+
         }
-        return res;
-      })
-      .then(res => res.json())
-      .then(data => setSanto(data));
+
+        // fallback: tenta IDs aleatórios válidos
+        while (idsTestados.size < MAX_ID) {
+
+          const randomId = Math.floor(Math.random() * MAX_ID) + 1;
+
+          if (idsTestados.has(randomId)) continue;
+
+          idsTestados.add(randomId);
+
+          try {
+
+            const fallbackRes = await fetch(`${API_URL}/api/santo/${randomId}`);
+
+            if (!fallbackRes.ok) continue;
+
+            const fallbackData = await fallbackRes.json();
+
+            if (fallbackData?.ID) {
+
+              setSanto(fallbackData);
+              return;
+
+            }
+
+          } catch (err) {
+
+            console.error("Erro buscando fallback:", err);
+
+          }
+
+        }
+
+        console.warn("Nenhum santo encontrado");
+
+      } catch (error) {
+
+        console.error("Erro geral ao buscar santo:", error);
+
+      }
+
+    };
+
+    buscarSanto();
 
   }, []);
 
