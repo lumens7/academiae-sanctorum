@@ -90,8 +90,11 @@ export default function Santo() {
 
   const carregarOutrosSantos = async () => {
 
-        const MAX_ID = 20;
-        const QUANTIDADE = 3;
+        // const MAX_ID = 20;
+        // const QUANTIDADE = 3;
+
+        const MAX_ID = 2;
+        const QUANTIDADE = 2;
 
         const santosEncontrados = [];
         const idsTestados = new Set();

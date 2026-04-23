@@ -88,7 +88,7 @@ export default function Hero() {
       }}
     >
 
-      <div className="absolute inset-0 bg-[#F4EFE6]/75"></div>
+      <div className="absolute inset-0 bg-[#F4EFE6]/85"></div>
 
       <div className="relative max-w-[1200px] mx-auto px-6 md:px-8 flex flex-col md:flex-row items-center md:items-center justify-between gap-12 md:gap-10 py-12 md:py-0 h-full">
 

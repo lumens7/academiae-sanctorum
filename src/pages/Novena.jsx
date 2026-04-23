@@ -44,7 +44,21 @@ export default function Novena() {
     });
 
 }, [santoId, novenaId]);
+  if (!novena) {
 
+        return (
+
+            <div className="min-h-screen flex items-center justify-center">
+
+                <p className="text-[#5B1E1E] text-lg">
+                    Carregando novena...
+                </p>
+
+            </div>
+
+        );
+
+    }
   return (
 
     <div className="min-h-screen bg-[#F4EFE6]">

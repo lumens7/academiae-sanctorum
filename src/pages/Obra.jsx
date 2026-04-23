@@ -30,7 +30,21 @@ export default function Obra() {
 
     }, [santoId, obraId]);
 
+    if (!obra) {
 
+        return (
+
+            <div className="min-h-screen flex items-center justify-center">
+
+                <p className="text-[#5B1E1E] text-lg">
+                    Carregando obra...
+                </p>
+
+            </div>
+
+        );
+
+    }
     return (
 
         <div className="min-h-screen bg-[#F4EFE6]">

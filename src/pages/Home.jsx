@@ -48,8 +48,11 @@ export default function Home() {
 
     const carregarSantos = async () => {
 
-      const MAX_ID = 10;
-      const QUANTIDADE = 9;
+      // const MAX_ID = 10;
+      // const QUANTIDADE = 9;
+
+      const MAX_ID = 2;
+      const QUANTIDADE = 2;
 
       const santosEncontrados = [];
       const idsTestados = new Set();
@@ -103,9 +106,11 @@ export default function Home() {
 
     const carregarOracoes = async () => {
 
-      const MAX_ID = 12;
-      const QUANTIDADE = 9;
-
+      // const MAX_ID = 12;
+      // const QUANTIDADE = 9;
+      const MAX_ID = 2;
+      const QUANTIDADE = 2;
+      
       const lista = [];
       const idsTestados = new Set();
 

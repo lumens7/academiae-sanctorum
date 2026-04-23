@@ -8,8 +8,8 @@ export function SearchProvider({ children }) {
 
     const [searchTerm, setSearchTerm] = useState("");
     const [results, setResults] = useState([]);
-    console.log("digitando:", searchTerm);
-    console.log("API:", `${API_URL}/api/search?q=${searchTerm}`);
+    // console.log("digitando:", searchTerm);
+    // console.log("API:", `${API_URL}/api/search?q=${searchTerm}`);
 
     useEffect(() => {
 
