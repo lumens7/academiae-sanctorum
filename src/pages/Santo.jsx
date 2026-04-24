@@ -165,12 +165,6 @@ export default function Santo() {
     }, [id]);
     const categorias =
         santo?.CATEGORIAS?.split("|").map(c => c.trim().toLowerCase()) || [];
-    console.log("santo:", santo);
-    console.log("oracoes:", oracoes);
-    console.log("musicas:", musicas);
-    console.log("novena:", novena);
-    console.log("obras:", obras);
-    console.log("outros:", outrosSantos);
     if (!santo) {
         return (
             <div className="min-h-screen flex items-center justify-center">
