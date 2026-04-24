@@ -5,14 +5,13 @@ export default function SantoCard({ id, nome, datas, descricao, imagem, categori
   function formatarData(data) {
   if (!data) return "";
 
-    const d = new Date(data);
+  const d = new Date(data);
 
-    const dia = String(d.getDate()).padStart(2, "0");
-    const mes = String(d.getMonth() + 1).padStart(2, "0");
-    const ano = d.getFullYear();
+  const dia = String(d.getUTCDate()).padStart(2, "0");
+  const mes = String(d.getUTCMonth() + 1).padStart(2, "0");
 
-    return `${dia}/${mes}`;
-  }
+  return `${dia}/${mes}`;
+}
 
   return (
 
