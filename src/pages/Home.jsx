@@ -17,8 +17,10 @@ export default function Home() {
 
   const [santos, setSantos] = useState([]);
   const [oracoes, setOracoes] = useState([]);
-  const [novena, setNovena] = useState([]);
+  const [novena, setNovena] = useState(null);
   const { searchTerm } = useSearch();
+
+  
 
   const santosFiltrados = santos.filter(santo =>
     santo.NOME.toLowerCase().includes(
@@ -45,6 +47,7 @@ export default function Home() {
   // =============================
 
   useEffect(() => {
+    setSantos([]);
 
     const carregarSantos = async () => {
 
@@ -103,6 +106,7 @@ export default function Home() {
   // =============================
 
   useEffect(() => {
+    setOracoes([]);
 
     const carregarOracoes = async () => {
 
@@ -110,7 +114,7 @@ export default function Home() {
       // const QUANTIDADE = 9;
       const MAX_ID = 2;
       const QUANTIDADE = 2;
-      
+
       const lista = [];
       const idsTestados = new Set();
 
@@ -135,7 +139,7 @@ export default function Home() {
 
           const data = await res.json();
 
-          if (data?.data?.length > 0) {
+          if (Array.isArray(data?.data) && data.data.length > 0) {
 
             lista.push({
               ...data.data[0],
@@ -173,7 +177,7 @@ export default function Home() {
 
           const data = await res.json();
 
-          if (data?.data?.length > 0) {
+          if (Array.isArray(data?.data) && data.data.length > 0) {
 
             setNovena({
               ...data.data[0],
@@ -187,7 +191,7 @@ export default function Home() {
         }
 
         // fallback: busca qualquer novena existente
-        for (let id = 1; id <= 20; id++) {
+        for (let id = 1; id <= 2 /*20 */; id++) {
 
           res = await fetch(`${API_URL}/api/santo/${id}/novena`);
 
@@ -195,7 +199,7 @@ export default function Home() {
 
           const data = await res.json();
 
-          if (data?.data?.length > 0) {
+          if (Array.isArray(data?.data) && data.data.length > 0) {
 
             setNovena({
               ...data.data[0],
@@ -246,7 +250,7 @@ export default function Home() {
         Os santos foram homens e mulheres como nós. Enfrentaram dificuldades, dúvidas e sofrimentos, mas confiaram na graça divina e perseveraram. Hoje participam da glória do céu e continuam auxiliando aqueles que ainda percorrem o caminho da fé.
       </p>
       <Divider />
-      <h2 
+      <h2
         className="text-[#5B1E1E] text-center mt-12 text-2xl md:text-3xl lg:text-4xl"
         style={{
           fontFamily: "Cormorant Garamond"
@@ -264,7 +268,7 @@ export default function Home() {
         </p>
 
       </div>
-
+    {santos.length > 0 && (
 
       <section className="py-16 max-w-[75em] mx-auto px-8">
 
@@ -287,6 +291,7 @@ export default function Home() {
         </Carousel>
 
       </section>
+    )}
       <h2 className="text-[#5B1E1E] text-center mt-12 text-2xl md:text-3xl lg:text-4xl"
         style={{
           fontFamily: "Cormorant Garamond"
@@ -317,9 +322,10 @@ export default function Home() {
 
         Cada história revela que seguir Cristo transforma o coração humano e conduz à verdadeira alegria que não passa.
       </p>
+      {oracoes?.length > 0 && (
       <section id="oracoes" className="py-16 max-w-[75em] mx-auto px-8">
         <Divider />
-        <h2 
+        <h2
           className="text-[#5B1E1E] text-center mt-12 text-2xl md:text-3xl lg:text-4xl"
           style={{
             fontFamily: "Cormorant Garamond"
@@ -360,6 +366,7 @@ export default function Home() {
         </Carousel>
 
       </section>
+      )}
       <h2 className="text-[#5B1E1E] text-center mt-12 text-2xl md:text-3xl lg:text-4xl"
         style={{
           fontFamily: "Cormorant Garamond"
@@ -381,34 +388,34 @@ export default function Home() {
         style={{ fontFamily: "EB Garamond" }}>
         Os santos não ensinaram apenas com palavras, mas com suas próprias vidas. Antes de falarem de Deus, aprenderam com Ele. Antes de conduzirem outros, deixaram-se conduzir.Santa Maria Madalena, por exemplo, permaneceu fiel até a cruz e foi a primeira testemunha da Ressurreição. Santa Teresa d’Ávila desejava profundamente contemplar a Deus e fez desse desejo o centro de sua vida espiritual. São João Bosco dedicou sua missão à salvação das almas, mostrando que amar a Deus significa também cuidar das pessoas.O testemunho dos santos continua sendo um convite vivo para todos nós.</p>
       <section id="novena" className="py-16 max-w-[75em] mx-auto px-8">
-        
-          {novena && (
-            <>
-<div className="flex flex-col items-center mb-2">
-          <Divider/>
-          <h2 
-            className="text-[#5B1E1E] text-center mt-12 text-2xl md:text-3xl lg:text-4xl"
-            style={{
-              fontFamily: "Cormorant Garamond"
-            }}>
-            Novena para Iniciar Hoje
-          </h2>
 
-        </div>
-        <div className="flex justify-center">
+        {novena && (
+          <>
+            <div className="flex flex-col items-center mb-2">
+              <Divider />
+              <h2
+                className="text-[#5B1E1E] text-center mt-12 text-2xl md:text-3xl lg:text-4xl"
+                style={{
+                  fontFamily: "Cormorant Garamond"
+                }}>
+                Novena para Iniciar Hoje
+              </h2>
 
-            <NovenaCard
-              titulo={novena.TITULO}
-              texto={novena.TEXTO}
-              nomeSanto={novena.NOME}
-              id={novena.ID}
-              santoId={novena.santoId}
-              dataComemoracao={novena.DATA_CANONIZACAO}
-            />
+            </div>
+            <div className="flex justify-center">
 
-        </div>
-        </>
-          )}
+              <NovenaCard
+                titulo={novena.TITULO}
+                texto={novena.TEXTO}
+                nomeSanto={novena.NOME}
+                id={novena.ID}
+                santoId={novena.santoId}
+                dataComemoracao={novena.DATA_CANONIZACAO}
+              />
+
+            </div>
+          </>
+        )}
 
 
       </section>

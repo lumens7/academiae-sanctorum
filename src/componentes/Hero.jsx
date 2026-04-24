@@ -8,10 +8,11 @@ export default function Hero() {
   const [santo, setSanto] = useState(null);
 
   useEffect(() => {
+    setSanto(null);
 
     const buscarSanto = async () => {
 
-      const MAX_ID = 20; // ajuste conforme total do seu banco
+      const MAX_ID = 2; // ajuste conforme total do seu banco
       const idsTestados = new Set();
 
       try {
@@ -21,7 +22,7 @@ export default function Hero() {
 
         if (res.ok) {
 
-          const data = await res.json();
+          const data = await res.json().catch(() => null);
 
           if (data?.ID) {
             setSanto(data);
@@ -45,7 +46,7 @@ export default function Hero() {
 
             if (!fallbackRes.ok) continue;
 
-            const fallbackData = await fallbackRes.json();
+            const fallbackData = await fallbackRes.json().catch(() => null);
 
             if (fallbackData?.ID) {
 

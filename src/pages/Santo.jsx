@@ -24,16 +24,33 @@ export default function Santo() {
     const [musicas, setMusicas] = useState([]);
     const [outrosSantos, setOutrosSantos] = useState([]);
     const [obras, setObras] = useState([]);
+    
+    useEffect(() => {
+
+        setSanto(null);
+        setOracoes([]);
+        setMusicas([]);
+        setObras([]);
+        setNovena(null);
+        setOutrosSantos([]);
+
+    }, [id]);
 
     const fetchData = async (url, setter, transform = (d) => d) => {
         try {
             const res = await fetch(url);
+
+            if (!res.ok) return;
+
             const data = await res.json();
+
             setter(transform(data));
+
         } catch (err) {
             console.error("Erro ao carregar dados:", err);
         }
     };
+    
 
     const categoriaStyles = {
         "apóstolos": "bg-[#1C2A3A] text-white",
@@ -80,7 +97,11 @@ export default function Santo() {
         fetchData(
             `${API_URL}/api/santo/${id}/novena`,
             (data) => {
-                if (data.length) setNovena(data[0]);
+                if (Array.isArray(data) && data.length > 0) {
+
+                    setNovena(data[0]);
+
+                }
             },
             (data) => data.data || []
         );
@@ -94,7 +115,7 @@ export default function Santo() {
         // const QUANTIDADE = 3;
 
         const MAX_ID = 2;
-        const QUANTIDADE = 2;
+        const QUANTIDADE = 1;
 
         const santosEncontrados = [];
         const idsTestados = new Set();
@@ -144,6 +165,12 @@ export default function Santo() {
     }, [id]);
     const categorias =
         santo?.CATEGORIAS?.split("|").map(c => c.trim().toLowerCase()) || [];
+    console.log("santo:", santo);
+    console.log("oracoes:", oracoes);
+    console.log("musicas:", musicas);
+    console.log("novena:", novena);
+    console.log("obras:", obras);
+    console.log("outros:", outrosSantos);
     if (!santo) {
         return (
             <div className="min-h-screen flex items-center justify-center">
