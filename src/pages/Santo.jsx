@@ -465,7 +465,10 @@ export default function Santo() {
                 </>
             )}
             <Divider />
-            <section id="santos" className="py-16 max-w-[75em] mx-auto px-4 md:px-8">
+            <section
+                id="santos"
+                className="py-24 max-w-[75em] mx-auto px-4 md:px-8"
+                >
 
                 <h2 
                     className="

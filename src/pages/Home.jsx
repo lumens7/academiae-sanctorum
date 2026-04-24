@@ -270,7 +270,7 @@ export default function Home() {
       </div>
     {santos.length > 0 && (
 
-      <section className="py-16 max-w-[75em] mx-auto px-8">
+      <section className="py-24 max-w-[75em] mx-auto px-10">
 
         <Carousel>
 

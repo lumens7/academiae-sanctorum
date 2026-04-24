@@ -20,7 +20,7 @@ export default function SantoCard({ id, nome, datas, descricao, imagem, categori
 
       <div className="
         w-[340px]
-        h-full
+        h-auto
         bg-white
         rounded-[6px]
         border-2
@@ -39,7 +39,7 @@ export default function SantoCard({ id, nome, datas, descricao, imagem, categori
             alt={nome}
             className="
               w-full
-              h-full
+              h-auto
               object-cover
               transition-transform
               duration-500
@@ -54,7 +54,7 @@ export default function SantoCard({ id, nome, datas, descricao, imagem, categori
 
         </div>
 
-        <div className="p-6 flex flex-col gap-3 h-[260px]">
+        <div className="p-6 flex flex-col gap-3 min-h-[260px]">
 
           <h3
             className="text-[#1C2A3A] text-xl sm:text-2xl"

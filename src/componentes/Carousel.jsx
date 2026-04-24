@@ -69,7 +69,7 @@ export default function Carousel({ children }) {
       <div
         ref={scrollRef}
         className="
-          flex
+          flex items-start
           gap-6
           px-6
           overflow-x-auto
