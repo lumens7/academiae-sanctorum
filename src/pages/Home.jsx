@@ -54,8 +54,8 @@ export default function Home() {
       // const MAX_ID = 10;
       // const QUANTIDADE = 9;
 
-      const MAX_ID = 2;
-      const QUANTIDADE = 2;
+      const MAX_ID = 3;
+      const QUANTIDADE = 3;
 
       const santosEncontrados = [];
       const idsTestados = new Set();
@@ -112,8 +112,8 @@ export default function Home() {
 
       // const MAX_ID = 12;
       // const QUANTIDADE = 9;
-      const MAX_ID = 2;
-      const QUANTIDADE = 2;
+      const MAX_ID = 3;
+      const QUANTIDADE = 3;
 
       const lista = [];
       const idsTestados = new Set();
