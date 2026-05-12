@@ -54,8 +54,8 @@ export default function Home() {
       // const MAX_ID = 10;
       // const QUANTIDADE = 9;
 
-      const MAX_ID = 3;
-      const QUANTIDADE = 3;
+      const MAX_ID = 5;
+      const QUANTIDADE = 5;
 
       const santosEncontrados = [];
       const idsTestados = new Set();
@@ -112,8 +112,8 @@ export default function Home() {
 
       // const MAX_ID = 12;
       // const QUANTIDADE = 9;
-      const MAX_ID = 3;
-      const QUANTIDADE = 3;
+      const MAX_ID = 5;
+      const QUANTIDADE = 5;
 
       const lista = [];
       const idsTestados = new Set();
@@ -191,7 +191,7 @@ export default function Home() {
         }
 
         // fallback: busca qualquer novena existente
-        for (let id = 1; id <= 2 /*20 */; id++) {
+        for (let id = 1; id <= 5 /*20 */; id++) {
 
           res = await fetch(`${API_URL}/api/santo/${id}/novena`);
 
