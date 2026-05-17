@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
 import { useSearch } from "./SearchProvider";
@@ -8,6 +8,14 @@ export default function Header({ links = [] }) {
     const { searchTerm, setSearchTerm } = useSearch();
 
     const [open, setOpen] = useState(false);
+    const navigate = useNavigate();
+
+    const handleHome = () => {
+        setSearchTerm("");
+        setOpen(false);
+        navigate("/");
+        window.scrollTo({ top: 0, behavior: "smooth" });
+    };
 
     return (
 
@@ -15,7 +23,7 @@ export default function Header({ links = [] }) {
 
             <div className="max-w-[1200px] mx-auto px-6 md:px-8 h-[80px] flex items-center justify-between">
 
-                <Link to="/" className="flex items-center gap-3">
+               <button onClick={handleHome} className="flex items-center gap-3">
 
                     <img
                         src="https://raw.githubusercontent.com/lumens7/ACADEMIAE-SANCTORUM-FOTOS/refs/heads/main/logo.png"
@@ -35,7 +43,7 @@ export default function Header({ links = [] }) {
 
                     </span>
 
-                </Link>
+                </button>
 
                 <button
                     className="md:hidden text-white"
@@ -51,9 +59,9 @@ export default function Header({ links = [] }) {
                         }`}
                 >
 
-                    <Link to="/" className="text-white hover:text-[#B89B5E]">
+                    <button onClick={handleHome} className="text-white hover:text-[#B89B5E]">
                         Início
-                    </Link>
+                    </button>
                     <a href="#sobre" className="text-white hover:text-[#B89B5E]">
                         Sobre
                     </a>
