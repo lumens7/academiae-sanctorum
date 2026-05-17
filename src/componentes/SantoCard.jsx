@@ -5,13 +5,14 @@ export default function SantoCard({ id, nome, datas, descricao, imagem, categori
   function formatarData(data) {
   if (!data) return "";
 
-  const d = new Date(data);
+    const d = new Date(data);
 
-  const dia = String(d.getUTCDate()).padStart(2, "0");
-  const mes = String(d.getUTCMonth() + 1).padStart(2, "0");
+    const dia = String(d.getDate()).padStart(2, "0");
+    const mes = String(d.getMonth() + 1).padStart(2, "0");
+    const ano = d.getFullYear();
 
-  return `${dia}/${mes}`;
-}
+    return `${dia}/${mes}`;
+  }
 
   return (
 
@@ -19,7 +20,7 @@ export default function SantoCard({ id, nome, datas, descricao, imagem, categori
 
       <div className="
         w-[340px]
-        h-auto
+        h-full
         bg-white
         rounded-[6px]
         border-2
@@ -38,7 +39,7 @@ export default function SantoCard({ id, nome, datas, descricao, imagem, categori
             alt={nome}
             className="
               w-full
-              h-auto
+              h-full
               object-cover
               transition-transform
               duration-500
@@ -53,7 +54,7 @@ export default function SantoCard({ id, nome, datas, descricao, imagem, categori
 
         </div>
 
-        <div className="p-6 flex flex-col gap-3 min-h-[260px]">
+        <div className="p-6 flex flex-col gap-3 h-[260px]">
 
           <h3
             className="text-[#1C2A3A] text-xl sm:text-2xl"
