@@ -78,7 +78,7 @@ export default function Header() {
                     type="text"
                     placeholder="Buscar..."
                     value={searchTerm}
-                    onChange={(e) => setSearchTterm(e.target.value)}
+                    onChange={(e) => setSearchTerm(e.target.value)}
                     className="w-full px-3 py-2 rounded bg-white text-black"
                 />
             </div>
