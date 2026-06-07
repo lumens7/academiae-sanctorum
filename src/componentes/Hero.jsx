@@ -12,7 +12,7 @@ export default function Hero() {
 
     const buscarSanto = async () => {
 
-      const MAX_ID = 50; // ajuste conforme total do seu banco
+      const MAX_ID = 60; // ajuste conforme total do seu banco
       const idsTestados = new Set();
 
       try {
