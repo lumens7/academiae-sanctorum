@@ -114,7 +114,7 @@ export default function Santo() {
         // const MAX_ID = 20;
         // const QUANTIDADE = 3;
 
-        const MAX_ID = 50;
+        const MAX_ID = 60;
         const QUANTIDADE = 9;
 
         const santosEncontrados = [];
