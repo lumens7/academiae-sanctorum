@@ -54,7 +54,7 @@ export default function Home() {
       // const MAX_ID = 10;
       // const QUANTIDADE = 9;
 
-      const MAX_ID = 60;
+      const MAX_ID = 87;
       const QUANTIDADE = 9;
 
       const santosEncontrados = [];
@@ -112,7 +112,7 @@ export default function Home() {
 
       // const MAX_ID = 12;
       // const QUANTIDADE = 9;
-      const MAX_ID = 60;
+      const MAX_ID = 87;
       const QUANTIDADE = 9;
 
       const lista = [];
