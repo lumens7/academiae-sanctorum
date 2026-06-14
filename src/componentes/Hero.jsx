@@ -72,7 +72,11 @@ export default function Hero() {
       }
 
     };
-    const limitarPalavras = (texto, maxPalavras) => {
+
+    buscarSanto();
+
+  }, []);
+  const limitarPalavras = (texto, maxPalavras) => {
       if (!texto) return "";
     
       const palavras = texto.split(" ");
@@ -83,10 +87,6 @@ export default function Hero() {
     
       return palavras.slice(0, maxPalavras).join(" ") + "...";
     };
-
-    buscarSanto();
-
-  }, []);
 
   return (
 
