@@ -12,7 +12,7 @@ export default function Hero() {
 
     const buscarSanto = async () => {
 
-      const MAX_ID = 60; // ajuste conforme total do seu banco
+      const MAX_ID = 87; // ajuste conforme total do seu banco
       const idsTestados = new Set();
 
       try {
@@ -71,6 +71,17 @@ export default function Hero() {
 
       }
 
+    };
+    const limitarPalavras = (texto, maxPalavras) => {
+      if (!texto) return "";
+    
+      const palavras = texto.split(" ");
+    
+      if (palavras.length <= maxPalavras) {
+        return texto;
+      }
+    
+      return palavras.slice(0, maxPalavras).join(" ") + "...";
     };
 
     buscarSanto();
@@ -137,7 +148,7 @@ export default function Hero() {
           >
 
             {santo
-              ? santo.RESUMO_VIDA
+              ? limitarPalavras(santo.RESUMO_VIDA, 60)
               : "Descubra a história de santidade daqueles que marcaram a Igreja."}
 
           </p>
